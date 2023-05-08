@@ -11,7 +11,7 @@ function IconButton(props: ButtonProps) {
 
   return (
     <button
-      className={`flex items-center justify-center rounded h-12 w-12  shadow-md text-primary transition-all bg-white hover:scale-110 active:scale-100 dark:bg-neutral-800  ${className}`}
+      className={`flex items-center justify-center rounded h-12 w-12  shadow-md text-primary transition-all bg-white hover:scale-110 active:scale-100 dark:bg-neutral-900  ${className}`}
       onClick={onClick}
       type={type}
       disabled={disabled}
