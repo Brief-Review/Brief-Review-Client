@@ -1,10 +1,4 @@
-interface ButtonProps {
-  children: React.ReactNode;
-  onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-  className?: string;
-  disabled?: boolean;
-}
+import { ButtonProps } from "../../../models/commons/Button.model";
 
 function Button(props: ButtonProps) {
   const { children, onClick, type, className, disabled } = props;
