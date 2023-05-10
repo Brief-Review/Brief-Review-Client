@@ -9,7 +9,7 @@ function Header() {
           Brief Review
         </h1>
         <IconButton>
-          <AiOutlineBell/>
+          <AiOutlineBell />
         </IconButton>
         <div className="flex flex-row gap-4">
           <div className="flex-col text-right hidden md:block lg:block">
