@@ -10,7 +10,9 @@ function IconButton(props: ButtonProps) {
       type={type}
       disabled={disabled}
     >
-      <span className="first:h-6 first:w-6 first:text-2xl first:m-auto">{children}</span>
+      <span className="first:h-6 first:w-6 first:text-2xl first:m-auto">
+        {children}
+      </span>
     </button>
   );
 }
