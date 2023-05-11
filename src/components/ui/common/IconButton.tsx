@@ -5,7 +5,7 @@ function IconButton(props: ButtonProps) {
 
   return (
     <button
-      className={`flex items-center justify-center rounded h-12 w-12  shadow-md text-primary transition-all bg-white hover:scale-110 active:scale-100 dark:bg-neutral-900  ${className}`}
+      className={`flex items-center justify-center rounded h-12 w-12 min-w-2000  shadow-md text-neutral-500 dark:text-white  transition-all  hover:scale-110 active:scale-100 dark:bg-neutral-900  ${className}`}
       onClick={onClick}
       type={type}
       disabled={disabled}

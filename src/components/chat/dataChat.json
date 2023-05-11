@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": 0,
+      "nameChat": "chatname cero"
+    },
+    {
+      "id": 1,
+      "nameChat": "chatname uno"
+    },
+    {
+      "id": 2,
+      "nameChat": "chatname dos"
+    },
+    {
+      "id": 3,
+      "nameChat": "chatname tres"
+    },
+    {
+      "id": 4,
+      "nameChat": "chatname cuatro"
+    }
+  ]
+}
