@@ -1,12 +1,6 @@
 import React, { useRef, useEffect } from "react";
+import { FilterButtonProps } from "../../../models/commons/FilterButton.model";
 
-interface FilterButtonProps {
-  showFilterOptions: boolean;
-  toggleFilterOptions: () => void;
-  programmingLanguages: string[];
-  selectedFilters: string[];
-  handleFilterToggle: (language: string) => void;
-}
 
 const FilterButton: React.FC<FilterButtonProps> = ({
   showFilterOptions,
@@ -62,19 +56,19 @@ const FilterButton: React.FC<FilterButtonProps> = ({
       {showFilterOptions && (
         <div
           ref={optionsRef}
-          className="origin-top-right absolute right-44 top-10 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+          className="origin-top-right absolute right-44 top-10 mt-2 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
         >
           <div className="p-4">
             <h3 className="font-semibold mb-2">Filter Options</h3>
             <ul>
               {programmingLanguages.map((language) => (
                 <li key={language} className="mb-2">
-                  <label className="flex items-center">
+                  <label className="flex items-center" 
+                      onClick={(event) => event.stopPropagation()}>
                     <input
                       type="checkbox"
                       checked={selectedFilters.includes(language)}
                       onChange={() => handleFilterCheckboxChange(language)}
-                      onClick={(event) => event.stopPropagation()}
                       className="mr-2 rounded-full"
                     />
                     {language}

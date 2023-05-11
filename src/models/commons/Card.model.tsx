@@ -6,7 +6,7 @@ export interface CardProps {
   thumbnail?: string;
   title: string;
   description: string;
-  new?: boolean;
+  isNew?: boolean;
   date: string;
   sortBy: "newest" | "oldest";
   tags: string[];

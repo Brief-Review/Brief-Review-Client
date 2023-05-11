@@ -1,11 +1,6 @@
 import React, { useRef, useEffect } from "react";
+import { SortButtonProps } from "../../../models/commons/SortButton.model";
 
-interface SortButtonProps {
-  showSortOptions: boolean;
-  toggleSortOptions: () => void;
-  sortBy: "oldest" | "newest";
-  handleSortBy: (sortOption: "oldest" | "newest") => void;
-}
 
 const SortButton: React.FC<SortButtonProps> = ({
   showSortOptions,
@@ -38,7 +33,7 @@ const SortButton: React.FC<SortButtonProps> = ({
       onClick={toggleSortOptions}
     >
       Ordenar por fecha
-      <svg
+        <svg
         className="w-4 h-4 ml-2"
         aria-hidden="true"
         fill="none"
@@ -73,7 +68,7 @@ const SortButton: React.FC<SortButtonProps> = ({
               Más nuevo
             </button>
             <button
-              className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left ${
+              className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:rounded-b-lg w-full text-left ${
                 sortBy === "oldest" ? "bg-gray-100" : ""
               }`}
               onClick={() => handleSortBy("oldest")}

@@ -8,7 +8,7 @@ export const Card = ({
   thumbnail,
   title,
   description,
-  new: isNew,
+  isNew: isNew,
   date,
   sortBy,
   tags,

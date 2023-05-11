@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useState, useMemo } from "react";
 import { CardProps } from "../../../models/commons/Card.model";
 import FilterButton from "./FilterButton";
 import SortButton from "./SortButton";
@@ -32,23 +32,35 @@ const CardsGrid = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const sortedChildren = React.Children.toArray(children)
-    .filter((child: React.ReactNode) => {
+  const filteredChildren = useMemo(() => {
+    const filterChildren = (children: React.ReactNode): React.ReactNode[] => {
       const getTags = (node: React.ReactNode): string[] =>
         (node as React.ReactElement<CardProps>)?.props?.tags || [];
 
-      return selectedFilters.every((filter) => getTags(child).includes(filter));
-    })
-    .sort((a: React.ReactNode, b: React.ReactNode) => {
+      return React.Children.toArray(children).filter((child) =>
+        selectedFilters.every((filter) => getTags(child).includes(filter))
+      );
+    };
+
+    return filterChildren(children);
+  }, [children, selectedFilters]);
+
+  const sortedChildren = useMemo(() => {
+    const sortChildren = (children: React.ReactNode[]): React.ReactNode[] => {
       const getDate = (node: React.ReactNode): string =>
         (node as React.ReactElement<CardProps>)?.props?.date || "";
 
-      if (sortBy === "newest") {
-        return new Date(getDate(b)).getTime() - new Date(getDate(a)).getTime();
-      } else {
-        return new Date(getDate(a)).getTime() - new Date(getDate(b)).getTime();
-      }
-    });
+      return [...children].sort((a, b) => {
+        if (sortBy === "newest") {
+          return new Date(getDate(b)).getTime() - new Date(getDate(a)).getTime();
+        } else {
+          return new Date(getDate(a)).getTime() - new Date(getDate(b)).getTime();
+        }
+      });
+    };
+
+    return sortChildren(filteredChildren);
+  }, [filteredChildren, sortBy]);
 
   const programmingLanguages = [
     "JavaScript",
