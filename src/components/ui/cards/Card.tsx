@@ -13,8 +13,8 @@ export const Card = ({
   sortBy,
   tags,
 }: CardProps) => {
-  const cardClasses = `w-96 bg-white shadow-lg rounded-lg p-4 ${className}`;
-  const isNewCard = isNew ? 'New!' : '';
+  const cardClasses = `w-full md:w-98 bg-white shadow-lg rounded-lg p-4 ${className}`;
+  const isNewCard = isNew ? "Nuevo!" : "";
 
   return (
     <div className={cardClasses}>
@@ -32,17 +32,18 @@ export const Card = ({
             </span>
           ))}
         </div>
-        {isNew && <span className="px-2 py-1 bg-green-500 rounded-md text-white mr-2 mb-2">{isNewCard}</span>}
+        {isNew && (
+          <span className="h-8 px-2 py-1 bg-green-500 rounded-md text-white mr-2 mb-2">
+            {isNewCard}
+          </span>
+        )}
       </div>
       <h2 className="text-lg text-gray-500 font-bold mb-2">{title}</h2>
       <p className="text-gray-700 mb-4">{description}</p>
       {children}
       <div className="text-gray-500 text-sm mt-2">
         <span>{date}</span>
-        <span className="mx-2">•</span>
-        <span>{sortBy === 'newest' ? 'Sorted by newest' : 'Sorted by oldest'}</span>
       </div>
     </div>
   );
-}
-
+};
