@@ -3,7 +3,7 @@ import { CardProps } from "../../../models/commons/Card.model";
 import FilterButton from "./FilterButton";
 import SortButton from "./SortButton";
 
-const CardsGrid = ({ children }: { children: ReactNode }) => {
+const CardsGrid = ({ children, className }: { children: ReactNode; className?: string }) => {
   const [sortBy, setSortBy] = useState<"oldest" | "newest">("newest");
   const [showSortOptions, setShowSortOptions] = useState(false);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
@@ -74,7 +74,7 @@ const CardsGrid = ({ children }: { children: ReactNode }) => {
   ];
 
   return (
-    <div className="cards-grid-container">
+    <div className={`cards-grid-container ${className}`}>
       <div className="text-right flex justify-end gap-2 p-4">
         <FilterButton
           showFilterOptions={showFilterOptions}
