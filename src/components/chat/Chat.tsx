@@ -1,19 +1,18 @@
 import { AiOutlineSend } from "react-icons/ai";
-import {useState} from 'react'
+import { useState } from "react";
 import IconButton from "../ui/common/IconButton";
 import ChatsButton from "./ChatsButton";
 import data from "./dataChat.json";
 import { useParams } from "react-router-dom";
 import Message from "./Message";
 function Chat({ className }: { className?: string }) {
-
   const { id } = useParams();
 
   interface ChatData {
     id: number;
     nameChat: string;
   }
-  const [message, setMessage] = useState<string>('')
+  const [message, setMessage] = useState<string>("");
 
   const chatData: ChatData = data.data[Number(id)];
 
@@ -28,17 +27,20 @@ function Chat({ className }: { className?: string }) {
     { id: 2, name: "alex", message: "Que tal" },
     { id: 3, name: "me", message: "Todo bien" },
     { id: 4, name: "alex", message: "Que bueno" },
-  ])
+  ]);
 
-  const sendMessage = (e:any) => {
+  const sendMessage = (e: any) => {
     e.preventDefault();
-    if(message === ""){
-      return 
+    if (message === "") {
+      return;
     }
     console.log("hola form");
-    setArrayMessages((prevMessages) => [    ...prevMessages,    { id: prevMessages.length, name: "me", message: message },  ]);
+    setArrayMessages((prevMessages) => [
+      ...prevMessages,
+      { id: prevMessages.length, name: "me", message: message },
+    ]);
     setMessage("");
-  }
+  };
 
   return (
     <div
@@ -53,11 +55,14 @@ function Chat({ className }: { className?: string }) {
           return <Message key={index} messageData={message} />;
         })}
       </div>
-      <form onSubmit={(e) => sendMessage(e)} className="p-4 gap-4 flex flex-row w-full justify-between">
+      <form
+        onSubmit={(e) => sendMessage(e)}
+        className="p-4 gap-4 flex flex-row w-full justify-between"
+      >
         <input
           type="text"
           value={message}
-          onChange={((e)=> setMessage(e.target.value))}
+          onChange={(e) => setMessage(e.target.value)}
           placeholder="Escribe algo..."
           className="p-2 shadow-md w-full outline-none placeholder:opacity-90 focus:ring-1 focus:ring-primary dark:bg-neutral-900 "
         />

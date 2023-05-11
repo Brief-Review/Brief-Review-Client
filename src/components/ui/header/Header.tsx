@@ -17,7 +17,7 @@ function Header({ className }: { className?: string }) {
             <h4 className="dark:text-white ">Nombre de usuario</h4>
             <p className="dark:text-white">Rol de usuario</p>
           </div>
-          <ProfileIcon/>
+          <ProfileIcon />
         </div>
       </div>
     </div>

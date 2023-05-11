@@ -1,7 +1,7 @@
 export interface messageData {
-  id: number,
-  name: string,
-  message: string,
+  id: number;
+  name: string;
+  message: string;
 }
 
 function Message(props: { messageData: messageData }) {
