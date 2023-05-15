@@ -13,7 +13,7 @@ export const Card = ({
   sortBy,
   tags,
 }: CardProps) => {
-  const cardClasses = `w-full md:w-98 bg-white shadow-lg rounded-lg p-4 ${className}`;
+  const cardClasses = `w-full bg-white shadow-lg rounded-lg p-4 dark:bg-neutral-800 md:w-98 ${className}`;
   const isNewCard = isNew ? "Nuevo!" : "";
 
   return (
@@ -26,7 +26,7 @@ export const Card = ({
           {tags.map((tag) => (
             <span
               key={tag}
-              className="px-2 py-1 bg-gray-200 rounded-md text-gray-700 mr-2 mb-2"
+              className="px-2 py-1 bg-gray-200 rounded-md text-gray-700 mr-2 mb-2 dark:bg-neutral-700 00 dark:text-neutral-100"
             >
               {tag}
             </span>
@@ -38,10 +38,10 @@ export const Card = ({
           </span>
         )}
       </div>
-      <h2 className="text-lg text-gray-500 font-bold mb-2">{title}</h2>
+      <h2 className="text-lg text-gray-500 font-bold mb-2 dark:text-neutral-50">{title}</h2>
       <p className="text-gray-700 mb-4">{description}</p>
       {children}
-      <div className="text-gray-500 text-sm mt-2">
+      <div className="text-gray-500 text-sm mt-2 dark:text-neutral-50">
         <span>{date}</span>
       </div>
     </div>

@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { SortButtonProps } from "../../../models/commons/SortButton.model";
 
-
 const SortButton: React.FC<SortButtonProps> = ({
   showSortOptions,
   toggleSortOptions,
@@ -28,30 +27,32 @@ const SortButton: React.FC<SortButtonProps> = ({
   }, [toggleSortOptions]);
 
   return (
-    <button
-      className="text-black bg-primary-700 hover:bg-primary-800 font-medium rounded-lg text-sm text-center inline-flex items-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-      onClick={toggleSortOptions}
-    >
-      Ordenar por fecha
-        <svg
-        className="w-4 h-4 ml-2"
-        aria-hidden="true"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
+    <div className="relative inline-block">
+      <button
+        className="text-black bg-primary-700 hover:bg-primary-800 font-medium rounded-lg text-sm text-center inline-flex items-center dark:hover:bg-primary-700 dark:focus:ring-primary-800 dark:text-white"
+        onClick={toggleSortOptions}
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="2"
-          d="M19 9l-7 7-7-7"
-        ></path>
-      </svg>
+        Ordenar por fecha
+        <svg
+          className="w-4 h-4 ml-2"
+          aria-hidden="true"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M19 9l-7 7-7-7"
+          ></path>
+        </svg>
+      </button>
       {showSortOptions && (
         <div
           ref={optionsRef}
-          className="origin-top-right absolute top-10 right-4 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+          className="origin-top-right absolute top-full right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10"
         >
           <div
             role="menu"
@@ -59,8 +60,8 @@ const SortButton: React.FC<SortButtonProps> = ({
             aria-labelledby="filter-options-menu"
           >
             <button
-              className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 w-full text-left ${
-                sortBy === "newest" ? "bg-gray-100" : ""
+              className={`block px-4 py-2 text-sm text-gray-700 dark:bg-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-800 hover:text-gray-900 hover:rounded-t-lg focus:rounded-t-lg w-full text-left dark:text-white ${
+                sortBy === "newest" ? "bg-gray-300 rounded-t-lg" : ""
               }`}
               onClick={() => handleSortBy("newest")}
               role="menuitem"
@@ -68,8 +69,8 @@ const SortButton: React.FC<SortButtonProps> = ({
               Más nuevo
             </button>
             <button
-              className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:rounded-b-lg w-full text-left ${
-                sortBy === "oldest" ? "bg-gray-100" : ""
+              className={`block px-4 py-2 text-sm text-gray-700 dark:bg-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-800 hover:text-gray-900 hover:rounded-b-lg focus:rounded-b-lg w-full text-left dark:text-white ${
+                sortBy === "oldest" ? "bg-gray-300 dark:focus:bg-neutral-800 rounded-b-lg" : ""
               }`}
               onClick={() => handleSortBy("oldest")}
               role="menuitem"
@@ -79,7 +80,7 @@ const SortButton: React.FC<SortButtonProps> = ({
           </div>
         </div>
       )}
-    </button>
+    </div>
   );
 };
 
