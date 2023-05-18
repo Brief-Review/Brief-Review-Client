@@ -9,15 +9,15 @@ const Router = () => {
     <HashRouter>
       <div className="bg-white dark:bg-black">
         <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/home" element={<Home/>} />
-          <Route path="/messages/:id" element={<Messages/>} />
-          <Route path="/resources" element={<Resources/>} />
-          <Route path="/briefings" element={<Briefings/>} />
-        </Routes> 
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/messages/:id" element={<Messages />} />
+          <Route path="/resources" element={<Resources />} />
+          <Route path="/briefings" element={<Briefings />} />
+        </Routes>
       </div>
     </HashRouter>
   );
-}
+};
 
 export default Router;

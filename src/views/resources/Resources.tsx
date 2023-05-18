@@ -1,5 +1,5 @@
-import { Card } from "../../components/ui/cards/Card";
-import CardsGrid from "../../components/ui/cards/CardsGrid";
+import { ResourceCard } from "../../components/cards/ResourceCard";
+import ResourcesGrid from "../../components/templates/ResourcesGrid";
 import Header from "../../components/ui/header/Header";
 import Navbar from "../../components/ui/navbar/Navbar";
 
@@ -13,62 +13,56 @@ function Resources() {
     <div className="w-full h-screen py-8 grid grid-cols-12 grid-rows-6 gap-4">
       <Header className="col-span-12 row-span-1 place-self-center lg:col-span-11 " />
       <Navbar className="col-span-12 row-span-1 place-self-center row-start-6 max-h-12 lg:max-h-[100%] lg:col-span-1 lg:row-start-1 lg:row-end-7 " />
-      <CardsGrid className="col-span-12 row-span-4 row-start-2 row-end-6 lg:row-span-5 lg:row-start-2 overflow-y-scroll py-4">
-        <Card
+      <ResourcesGrid className="col-span-12 row-span-4 row-start-2 row-end-6 lg:row-span-5 lg:row-start-2 overflow-y-scroll p-4">
+        <ResourceCard
           tags={tags}
           thumbnail={thumbnailUrl}
-          className="text-red-500"
           title="Titulo! :)"
           isNew={false}
           date={"Mayo 9, 2023"}
           sortBy="newest"
-        ></Card>
-        <Card
+        ></ResourceCard>
+        <ResourceCard
           tags={tags2}
           thumbnail={thumbnailUrl}
-          className="text-red-500"
-          title="Titulo! :) pero distinto!" 
+          title="Titulo! :) pero distinto!"
           isNew={false}
           date={"Mayo 15, 2022"}
           sortBy="oldest"
-        ></Card>
-        <Card
+        ></ResourceCard>
+        <ResourceCard
           tags={tags3}
           thumbnail={thumbnailUrl}
-          className="text-red-500"
           title="Titulo! :) pero distinto!"
           isNew={false}
           date={"Mayo 11, 2023"}
           sortBy="oldest"
-        ></Card>
-        <Card
+        ></ResourceCard>
+        <ResourceCard
           tags={tags}
           thumbnail={thumbnailUrl}
-          className="text-red-500"
-          title="Titulo! :) pero distinto!" 
+          title="Titulo! :) pero distinto!"
           isNew={true}
           date={"Mayo 12, 2023"}
           sortBy="oldest"
-        ></Card>
-        <Card
+        ></ResourceCard>
+        <ResourceCard
           tags={tags}
           thumbnail={thumbnailUrl}
-          className="text-red-500"
-          title="Titulo! :) pero distinto!" 
+          title="Titulo! :) pero distinto!"
           isNew={true}
           date={"Mayo 11, 2023"}
           sortBy="oldest"
-        ></Card>
-        <Card
+        ></ResourceCard>
+        <ResourceCard
           tags={tags}
           thumbnail={thumbnailUrl}
-          className="text-red-500"
-          title="Titulo! :) pero distinto!" 
+          title="Titulo! :) pero distinto!"
           isNew={false}
           date={"Mayo 11, 2023"}
           sortBy="oldest"
-        ></Card>
-      </CardsGrid>
+        ></ResourceCard>
+      </ResourcesGrid>
     </div>
   );
 }

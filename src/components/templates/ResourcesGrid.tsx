@@ -1,9 +1,15 @@
 import React, { ReactNode, useState, useMemo } from "react";
-import { CardProps } from "../../../models/commons/Card.model";
-import FilterButton from "./FilterButton";
-import SortButton from "./SortButton";
+import { ResourcesCardProps } from "../../models/commons/ResourcesCard.model";
+import FilterButton from "../cards/FilterButton";
+import SortButton from "../cards/SortButton";
 
-const CardsGrid = ({ children, className }: { children: ReactNode; className?: string }) => {
+const ResourcesGrid = ({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) => {
   const [sortBy, setSortBy] = useState<"oldest" | "newest">("newest");
   const [showSortOptions, setShowSortOptions] = useState(false);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
@@ -35,7 +41,7 @@ const CardsGrid = ({ children, className }: { children: ReactNode; className?: s
   const filteredChildren = useMemo(() => {
     const filterChildren = (children: React.ReactNode): React.ReactNode[] => {
       const getTags = (node: React.ReactNode): string[] =>
-        (node as React.ReactElement<CardProps>)?.props?.tags || [];
+        (node as React.ReactElement<ResourcesCardProps>)?.props?.tags || [];
 
       return React.Children.toArray(children).filter((child) =>
         selectedFilters.every((filter) => getTags(child).includes(filter))
@@ -48,13 +54,17 @@ const CardsGrid = ({ children, className }: { children: ReactNode; className?: s
   const sortedChildren = useMemo(() => {
     const sortChildren = (children: React.ReactNode[]): React.ReactNode[] => {
       const getDate = (node: React.ReactNode): string =>
-        (node as React.ReactElement<CardProps>)?.props?.date || "";
+        (node as React.ReactElement<ResourcesCardProps>)?.props?.date || "";
 
       return [...children].sort((a, b) => {
         if (sortBy === "newest") {
-          return new Date(getDate(b)).getTime() - new Date(getDate(a)).getTime();
+          return (
+            new Date(getDate(b)).getTime() - new Date(getDate(a)).getTime()
+          );
         } else {
-          return new Date(getDate(a)).getTime() - new Date(getDate(b)).getTime();
+          return (
+            new Date(getDate(a)).getTime() - new Date(getDate(b)).getTime()
+          );
         }
       });
     };
@@ -75,7 +85,10 @@ const CardsGrid = ({ children, className }: { children: ReactNode; className?: s
 
   return (
     <div className={`cards-grid-container ${className}`}>
-      <div className="text-right flex justify-end gap-2 p-4">
+      <h2 className="dark:text-white">
+        Recursos
+      </h2>
+      <div className="text-right flex justify-end gap-2">
         <FilterButton
           showFilterOptions={showFilterOptions}
           toggleFilterOptions={toggleFilterOptions}
@@ -104,4 +117,4 @@ const CardsGrid = ({ children, className }: { children: ReactNode; className?: s
   );
 };
 
-export default CardsGrid;
+export default ResourcesGrid;

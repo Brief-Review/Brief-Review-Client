@@ -1,6 +1,6 @@
-import { CardProps } from "../../../models/commons/Card.model";
+import { ResourcesCardProps } from "../../models/commons/ResourcesCard.model";
 
-export const Card = ({
+export const ResourceCard = ({
   children,
   onClick,
   className,
@@ -12,8 +12,8 @@ export const Card = ({
   date,
   sortBy,
   tags,
-}: CardProps) => {
-  const cardClasses = `w-full bg-white shadow-lg rounded-lg p-4 dark:bg-neutral-800 md:w-98 ${className}`;
+}: ResourcesCardProps) => {
+  const cardClasses = `w-full bg-white shadow-md rounded-lg p-4 dark:bg-neutral-800 md:w-98 ${className}`;
   const isNewCard = isNew ? "Nuevo!" : "";
 
   return (

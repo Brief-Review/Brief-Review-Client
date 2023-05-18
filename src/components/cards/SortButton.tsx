@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { SortButtonProps } from "../../../models/commons/SortButton.model";
+import { SortButtonProps } from "../../models/commons/SortButton.model";
 
 const SortButton: React.FC<SortButtonProps> = ({
   showSortOptions,
@@ -70,7 +70,9 @@ const SortButton: React.FC<SortButtonProps> = ({
             </button>
             <button
               className={`block px-4 py-2 text-sm text-gray-700 dark:bg-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-800 hover:text-gray-900 hover:rounded-b-lg focus:rounded-b-lg w-full text-left dark:text-white ${
-                sortBy === "oldest" ? "bg-gray-300 dark:focus:bg-neutral-800 rounded-b-lg" : ""
+                sortBy === "oldest"
+                  ? "bg-gray-300 dark:focus:bg-neutral-800 rounded-b-lg"
+                  : ""
               }`}
               onClick={() => handleSortBy("oldest")}
               role="menuitem"

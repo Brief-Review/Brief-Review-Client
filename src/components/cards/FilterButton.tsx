@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import { FilterButtonProps } from "../../../models/commons/FilterButton.model";
+import { FilterButtonProps } from "../../models/commons/FilterButton.model";
 
 const FilterButton: React.FC<FilterButtonProps> = ({
   showFilterOptions,
@@ -60,7 +60,9 @@ const FilterButton: React.FC<FilterButtonProps> = ({
           className="origin-top-right absolute top-full right-0 mt-2 w-44 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10 dark:bg-neutral-800"
         >
           <div className="p-4">
-            <h3 className="font-semibold mb-2 text-center dark:text-white">Filter Options</h3>
+            <h3 className="font-semibold mb-2 text-center dark:text-white">
+              Filter Options
+            </h3>
             <ul>
               {programmingLanguages.map((language) => (
                 <li key={language} className="mb-2">
