@@ -1,17 +1,17 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{html,js,tsx}"],
-  darkMode: 'class',
+  darkMode: "class",
   theme: {
     extend: {
-      colors:{
-        primary:'#468C95',
-        secondary:'#DE6F2F',
+      colors: {
+        primary: "#468C95",
+        secondary: "#DE6F2F",
       },
-      fontFamily:{
-        monserrat:'Montserrat'
-      }
+      fontFamily: {
+        monserrat: "Montserrat",
+      },
     },
   },
-  plugins: [],
-}
+  plugins: [require("tailwind-scrollbar")],
+};
