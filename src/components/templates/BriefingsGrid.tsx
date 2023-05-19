@@ -13,7 +13,7 @@ const BriefingsGrid: React.FC<BriefingsGridProps> = ({ briefings }) => {
 
   return (
     <div className="col-span-12 row-span-4 row-start-2 row-end-6 lg:row-span-5 lg:row-start-2 overflow-y-scroll p-4">
-      <h2 className="dark:text-white">Briefings disponibles</h2>
+      <h2 className="dark:text-white mb-5">Briefings disponibles</h2>
       {availableBriefings.length > 0 ? (
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3" id="briefings-section-available">
           {availableBriefings.map((briefing, index) => (
@@ -24,7 +24,7 @@ const BriefingsGrid: React.FC<BriefingsGridProps> = ({ briefings }) => {
         <p>No hay briefings disponibles.</p>
       )}
 
-      <h2 className="dark:text-white mt-5">Briefings pendientes</h2>
+      <h2 className="dark:text-white mt-5 mb-5">Briefings pendientes</h2>
       {pendingBriefings.length > 0 ? (
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3" id="briefings-section-pending">
           {pendingBriefings.map((briefing, index) => (

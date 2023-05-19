@@ -22,7 +22,7 @@ export const ResourceCard = ({
         <img src={thumbnail} alt="Thumbnail" className="w-full h-auto mb-4" />
       )}
       <div className="flex justify-between mb-2">
-        <div className="flex flex-wrap items-center">
+        <div className="flex flex-wrap items-center ">
           {tags.map((tag) => (
             <span
               key={tag}

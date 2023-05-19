@@ -52,7 +52,7 @@ const SortButton: React.FC<SortButtonProps> = ({
       {showSortOptions && (
         <div
           ref={optionsRef}
-          className="origin-top-right absolute top-full right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10"
+          className="origin-top-right absolute top-full right-0 mt-2 w-32 hover:rounded-lg dark:rounded-lg rounded-lg shadow-lg bg-white ring-black ring-opacity-5 dark:outline-none focus:outline-none outline-none z-10"
         >
           <div
             role="menu"
@@ -60,8 +60,8 @@ const SortButton: React.FC<SortButtonProps> = ({
             aria-labelledby="filter-options-menu"
           >
             <button
-              className={`block px-4 py-2 text-sm text-gray-700 dark:bg-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-800 hover:text-gray-900 hover:rounded-t-lg focus:rounded-t-lg w-full text-left dark:text-white ${
-                sortBy === "newest" ? "bg-gray-300 rounded-t-lg" : ""
+              className={`block px-4 py-2 text-sm text-gray-700 dark:bg-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-700 hover:text-gray-900 rounded-t-lg dark:rounded-t-lg hover:rounded-t-lg dark:focus:rounded-b-lghover:rounded-t-lg focus:rounded-t-lg w-full text-left dark:text-white ${
+                sortBy === "newest" ? "bg-gray-300 dark:bg-neutral-800 hover:rounded-t-lg rounded-t-lg" : ""
               }`}
               onClick={() => handleSortBy("newest")}
               role="menuitem"
@@ -69,9 +69,9 @@ const SortButton: React.FC<SortButtonProps> = ({
               Más nuevo
             </button>
             <button
-              className={`block px-4 py-2 text-sm text-gray-700 dark:bg-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-800 hover:text-gray-900 hover:rounded-b-lg focus:rounded-b-lg w-full text-left dark:text-white ${
+              className={`block px-4 py-2 text-sm text-gray-700 dark:bg-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-700 hover:text-gray-900 rounded-b-lg dark:rounded-b-lg hover:rounded-b-lg dark:focus:rounded-b-lg  w-full text-left dark:text-white ${
                 sortBy === "oldest"
-                  ? "bg-gray-300 dark:focus:bg-neutral-800 rounded-b-lg"
+                  ? "bg-gray-300 dark:bg-neutral-800 hover:rounded-b-lg rounded-b-lg"
                   : ""
               }`}
               onClick={() => handleSortBy("oldest")}

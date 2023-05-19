@@ -88,7 +88,7 @@ const ResourcesGrid = ({
       <h2 className="dark:text-white">
         Recursos
       </h2>
-      <div className="text-right flex justify-end gap-2">
+      <div className="text-right flex justify-end gap-2 mb-5">
         <FilterButton
           showFilterOptions={showFilterOptions}
           toggleFilterOptions={toggleFilterOptions}
