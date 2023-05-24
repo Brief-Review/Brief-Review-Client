@@ -85,9 +85,7 @@ const ResourcesGrid = ({
 
   return (
     <div className={`cards-grid-container ${className}`}>
-      <h2 className="dark:text-white">
-        Recursos
-      </h2>
+      <h2 className="dark:text-white">Recursos</h2>
       <div className="text-right flex justify-end gap-2 mb-5">
         <FilterButton
           showFilterOptions={showFilterOptions}

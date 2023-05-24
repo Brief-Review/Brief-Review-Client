@@ -61,7 +61,9 @@ const SortButton: React.FC<SortButtonProps> = ({
           >
             <button
               className={`block px-4 py-2 text-sm text-gray-700 dark:bg-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-700 hover:text-gray-900 rounded-t-lg dark:rounded-t-lg hover:rounded-t-lg dark:focus:rounded-b-lghover:rounded-t-lg focus:rounded-t-lg w-full text-left dark:text-white ${
-                sortBy === "newest" ? "bg-gray-300 dark:bg-neutral-800 hover:rounded-t-lg rounded-t-lg" : ""
+                sortBy === "newest"
+                  ? "bg-gray-300 dark:bg-neutral-800 hover:rounded-t-lg rounded-t-lg"
+                  : ""
               }`}
               onClick={() => handleSortBy("newest")}
               role="menuitem"
@@ -69,7 +71,7 @@ const SortButton: React.FC<SortButtonProps> = ({
               Más nuevo
             </button>
             <button
-              className={`block px-4 py-2 text-sm text-gray-700 dark:bg-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-700 hover:text-gray-900 rounded-b-lg dark:rounded-b-lg hover:rounded-b-lg dark:focus:rounded-b-lg  w-full text-left dark:text-white ${
+              className={`block px-4 py-2 text-sm text-gray-700 dark:bg-neutral-600 hover:bg-gray-100 dark:hover:bg-neutral-7 00 hover:text-gray-900 rounded-b-lg dark:rounded-b-lg hover:rounded-b-lg dark:focus:rounded-b-lg  w-full text-left dark:text-white ${
                 sortBy === "oldest"
                   ? "bg-gray-300 dark:bg-neutral-800 hover:rounded-b-lg rounded-b-lg"
                   : ""

@@ -8,7 +8,10 @@ interface BriefingCardProps {
 
 const BriefingCard: React.FC<BriefingCardProps> = ({ briefing, onClick }) => {
   return (
-    <div className="briefing-card w-full flex justify-between bg-white shadow-lg rounded-lg p-4 dark:bg-neutral-800 dark:text-white hover:transition ease-in-out delay-150 duration-150 hover:scale-[1.03] hover:outline hover:outline-2 hover:outline-cyan-800" onClick={onClick}>
+    <div
+      className="briefing-card w-full flex justify-between bg-white shadow-lg rounded-lg p-4 dark:bg-neutral-800 dark:text-white hover:transition ease-in-out delay-150 duration-150 hover:scale-[1.03] hover:outline hover:outline-2 hover:outline-cyan-800"
+      onClick={onClick}
+    >
       <h3 className="text-md font-medium">{briefing.description}</h3>
       <svg
         xmlns="http://www.w3.org/2000/svg"

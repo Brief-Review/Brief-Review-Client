@@ -38,7 +38,9 @@ export const ResourceCard = ({
           </span>
         )}
       </div>
-      <h2 className="text-lg text-gray-500 font-bold mb-2 dark:text-neutral-50">{title}</h2>
+      <h2 className="text-lg text-gray-500 font-bold mb-2 dark:text-neutral-50">
+        {title}
+      </h2>
       <p className="text-gray-700 mb-4">{description}</p>
       {children}
       <div className="text-gray-500 text-sm mt-2 dark:text-neutral-50">
