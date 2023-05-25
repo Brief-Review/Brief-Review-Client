@@ -7,6 +7,7 @@ function Resources() {
   const tags = ["JavaScript", "React", "CSS"];
   const tags2 = ["Laravel", "Blade", "Php"];
   const tags3 = ["Bootstrap", "Jest", "Vite"];
+  const tags4 = ["Bootstrap", "React", "Laravel"];
   const thumbnailUrl = "https://react.dev/images/og-home.png";
 
   return (
@@ -55,7 +56,7 @@ function Resources() {
           sortBy="oldest"
         ></ResourceCard>
         <ResourceCard
-          tags={tags}
+          tags={tags4}
           thumbnail={thumbnailUrl}
           title="Titulo! :) pero distinto!"
           isNew={false}

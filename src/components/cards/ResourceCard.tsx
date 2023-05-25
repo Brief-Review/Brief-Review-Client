@@ -17,7 +17,7 @@ export const ResourceCard = ({
   const isNewCard = isNew ? "Nuevo!" : "";
 
   return (
-    <div className={cardClasses}>
+    <div id="resourceCard" className={cardClasses}>
       {thumbnail && (
         <img src={thumbnail} alt="Thumbnail" className="w-full h-auto mb-4" />
       )}
@@ -38,7 +38,10 @@ export const ResourceCard = ({
           </span>
         )}
       </div>
-      <h2 className="text-lg text-gray-500 font-bold mb-2 dark:text-neutral-50">
+      <h2
+        id="resourceText"
+        className="text-lg text-gray-500 font-bold mb-2 dark:text-neutral-50"
+      >
         {title}
       </h2>
       <p className="text-gray-700 mb-4">{description}</p>
