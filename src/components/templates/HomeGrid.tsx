@@ -40,7 +40,7 @@ const HomeGrid: React.FC<HomeGridProps> = ({ className, children }) => {
           Ver todos los recursos
         </a>
       </div>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-1 lg:grid-cols-2 p-4">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-1 lg:grid-cols-3 p-4">
         {filteredChildren}
       </div>
     </div>

@@ -8,7 +8,8 @@ function Login() {
   const navigate = useNavigate();
 
   return (
-    <div className="w-full h-screen px-[10%] py-8 grid grid-cols-12 ">
+
+    <div className="w-full h-screen px-[5%] py-8 grid grid-cols-12 ">
       <div className="hidden shadow-lg rounded bg-neutral-800 md:col-span-6 md:p-8 md:flex md:flex-col gap-12 md:justify-center">
         <span className="ml-8 flex  flex-col gap-2">
           <p className="text-white  text-2xl font-light">

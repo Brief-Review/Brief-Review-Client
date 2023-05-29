@@ -50,7 +50,7 @@ function Chat({ className }: { className?: string }) {
         <h4>{chatData?.nameChat}</h4>
         <ChatsButton chats={data.data} />
       </div>
-      <div className="w-full h-full overflow-y-scroll flex flex-col  p-8  ">
+      <div className="w-full h-full overflow-y-scroll scrollbar-thin scrollbar scrollbar-thumb-primary flex flex-col  p-8  ">
         {arrayMessages.map((message, index) => {
           return <Message key={index} messageData={message} />;
         })}
