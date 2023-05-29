@@ -2,7 +2,7 @@ import React, { ReactNode, useState, useMemo } from "react";
 import { ResourcesCardProps } from "../../models/commons/ResourcesCard.model";
 import FilterButton from "../cards/FilterButton";
 import SortButton from "../cards/SortButton";
-import ResourcesSearchBar from "../ui/common/resourcesSearchBar";
+import ResourcesSearchBar from "../ui/common/ResourcesSearchBar";
 import { getTags, getTitle } from "../../utilities/utils";
 
 const ResourcesGrid = ({
