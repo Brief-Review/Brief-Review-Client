@@ -3,7 +3,13 @@ import { CardProps } from "../../../models/commons/Card.model";
 import FilterButton from "./FilterButton";
 import SortButton from "./SortButton";
 
-const CardsGrid = ({ children, className }: { children: ReactNode; className?: string }) => {
+const CardsGrid = ({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) => {
   const [sortBy, setSortBy] = useState<"oldest" | "newest">("newest");
   const [showSortOptions, setShowSortOptions] = useState(false);
   const [showFilterOptions, setShowFilterOptions] = useState(false);
@@ -52,9 +58,13 @@ const CardsGrid = ({ children, className }: { children: ReactNode; className?: s
 
       return [...children].sort((a, b) => {
         if (sortBy === "newest") {
-          return new Date(getDate(b)).getTime() - new Date(getDate(a)).getTime();
+          return (
+            new Date(getDate(b)).getTime() - new Date(getDate(a)).getTime()
+          );
         } else {
-          return new Date(getDate(a)).getTime() - new Date(getDate(b)).getTime();
+          return (
+            new Date(getDate(a)).getTime() - new Date(getDate(b)).getTime()
+          );
         }
       });
     };
