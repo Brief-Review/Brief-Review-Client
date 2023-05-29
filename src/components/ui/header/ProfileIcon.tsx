@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { AiOutlineLogout } from "react-icons/ai";
 import { toggleDarkMode } from "../../../utilities/darkMode";
+import { useNavigate } from "react-router-dom";
 function ProfileIcon() {
   const [openPopup, setOpenPopup] = useState<boolean>(false);
+  const navigate = useNavigate();
 
   return (
     <div className="relative">
@@ -31,7 +33,10 @@ function ProfileIcon() {
         </span>
         <span className="w-full flex justify-between hover:bg-gray-100 rounded-sm p-2 cursor-pointer items-center">
           <p>Logout</p>
-          <AiOutlineLogout className="text-primary h-6 w-12 " />
+          <AiOutlineLogout
+            className="text-primary h-6 w-12 "
+            onClick={() => navigate("/login")}
+          />
         </span>
       </div>
     </div>
