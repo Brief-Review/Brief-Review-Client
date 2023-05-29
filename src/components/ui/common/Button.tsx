@@ -1,17 +1,11 @@
-interface ButtonProps {
-  children: React.ReactNode;
-  onClick?: () => void;
-  type?: "button" | "submit" | "reset";
-  className?: string;
-  disabled?: boolean;
-}
+import { ButtonProps } from "../../../models/commons/Button.model";
 
 function Button(props: ButtonProps) {
   const { children, onClick, type, className, disabled } = props;
 
   return (
     <button
-      className={`button ${className}`}
+      className={`bg-primary rounded py-2 px-4 text-white shadow-md font-semibold hover:scale-105 active:scale-100 transition-all ${className}`}
       onClick={onClick}
       type={type}
       disabled={disabled}
