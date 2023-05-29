@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { FilterButtonProps } from "../../../models/commons/FilterButton.model";
 
-
 const FilterButton: React.FC<FilterButtonProps> = ({
   showFilterOptions,
   toggleFilterOptions,
@@ -63,8 +62,10 @@ const FilterButton: React.FC<FilterButtonProps> = ({
             <ul>
               {programmingLanguages.map((language) => (
                 <li key={language} className="mb-2">
-                  <label className="flex items-center" 
-                      onClick={(event) => event.stopPropagation()}>
+                  <label
+                    className="flex items-center"
+                    onClick={(event) => event.stopPropagation()}
+                  >
                     <input
                       type="checkbox"
                       checked={selectedFilters.includes(language)}
