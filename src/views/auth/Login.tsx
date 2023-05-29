@@ -1,10 +1,12 @@
 import { AiOutlineGoogle } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/ui/common/Button";
 import Loginpicture from "../../assets/Loginpicture.tsx";
 import logo from "../../assets/br-logo.png";
 
 function Login() {
+  const navigate = useNavigate();
+
   return (
     <div className="w-full h-screen px-[10%] py-8 grid grid-cols-12 ">
       <div className="hidden shadow-lg rounded bg-neutral-800 md:col-span-6 md:p-8 md:flex md:flex-col gap-12 md:justify-center">
@@ -12,7 +14,9 @@ function Login() {
           <p className="text-white  text-2xl font-light">
             Bienvenid@ a <b className="font-semibold">Brief Review</b>
           </p>
-          <h2 className=" text-3xl text-white font-extrabold ">iniciar sesión</h2>
+          <h2 className=" text-3xl text-white font-extrabold ">
+            iniciar sesión
+          </h2>
         </span>
         <div className="w-[80%] aspect-square mx-auto">
           <Loginpicture />
@@ -51,7 +55,9 @@ function Login() {
           <label htmlFor="" className="w-full text-left">
             Recuerdame <input type="checkbox" />
           </label>
-          <Button className="w-full">Login</Button>
+          <Button className="w-full" onClick={() => navigate("/home")}>
+            Login
+          </Button>
           <Link to="" className="text-primary">
             ¿Olvidaste tu contraseña?
           </Link>

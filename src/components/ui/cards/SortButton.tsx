@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { SortButtonProps } from "../../../models/commons/SortButton.model";
 
-
 const SortButton: React.FC<SortButtonProps> = ({
   showSortOptions,
   toggleSortOptions,
@@ -33,7 +32,7 @@ const SortButton: React.FC<SortButtonProps> = ({
       onClick={toggleSortOptions}
     >
       Ordenar por fecha
-        <svg
+      <svg
         className="w-4 h-4 ml-2"
         aria-hidden="true"
         fill="none"
