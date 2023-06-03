@@ -13,19 +13,14 @@ function Login() {
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm();
-  const { setToken, setUser, user } = useContext(AppContext);
+  const { setToken } = useContext(AppContext);
 
-  const handleGetUser = async () => {
-    const { data } = await getUser();
-    setUser(data);
-    navigate("/home");
-  };
+
   
   const onSubmit = async (dataForm: any) => {
     try {
       const { data } = await login(dataForm);
       setToken(data.access_token);
-      handleGetUser();
       swal({
         text: "Iniciaste sesión con éxito",
         icon: "success",

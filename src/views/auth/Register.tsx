@@ -7,13 +7,15 @@ import { useForm } from "react-hook-form";
 import logo from "../../assets/br-logo.png";
 import swal from 'sweetalert';
 import AppContext from "../../context/global/AppContext";
-import { registerUser } from "../../services/userServices/user.services";
+import { getUser, registerUser } from "../../services/userServices/user.services";
 
 function Register() {
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm();
-  const { setToken } = useContext(AppContext);
+  const { setToken, setUser } = useContext(AppContext);
+
+
 
   const onSubmit = async (dataForm: any) => {
     try {
