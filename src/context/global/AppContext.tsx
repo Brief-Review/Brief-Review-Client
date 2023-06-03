@@ -1,5 +1,6 @@
 import { createContext, useState, ReactNode } from "react";
 import { User } from "../../models/auth/User.model";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 type AppContextType = {};
 
@@ -10,11 +11,14 @@ type HomeProviderProps = {
 };
 
 export const AppProvider = ({ children }: HomeProviderProps) => {
-  const [user, setUser] = useState<User | null>(null);
-
+  const [user, setUser] = useLocalStorage('user','');
+  const [token, setToken] = useLocalStorage('token','');
+  
   const contextData: AppContextType = {
     user,
     setUser,
+    token,
+    setToken,
   };
 
   return (
