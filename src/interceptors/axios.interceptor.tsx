@@ -1,12 +1,21 @@
 import axios from "axios";
-
-const user = { token: "" }; // objeto con un usuario
-
-const token = user?.token;
+import { useEffect, useContext } from "react";
+import AppContext from "../context/global/AppContext";
 
 export const AxiosInterceptor = () => {
-  axios.interceptors.request.use((config) => {
-    config.headers.Authorization = `Bearer ${token}`;
-    return config;
-  });
+  const { token } = useContext(AppContext);
+
+  useEffect(() => {
+    const interceptor = axios.interceptors.request.use((config) => {
+      config.headers.Authorization = `Bearer ${token}`;
+      return config;
+    });
+
+    return () => {
+      axios.interceptors.request.eject(interceptor);
+    };
+  }, [token]);
+
+  return null; // Opcionalmente, puedes devolver algún contenido si lo necesitas
 };
+
