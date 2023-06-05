@@ -7,13 +7,13 @@ import AppContext from "../../../context/global/AppContext";
 function ProfileIcon() {
   const [openPopup, setOpenPopup] = useState<boolean>(false);
   const navigate = useNavigate();
-  const {user,setUser,setToken} = useContext(AppContext);
+  const { user, setUser, setToken } = useContext(AppContext);
 
   const logout = () => {
     swal({
       title: "¿Estás seguro de cerrar tu sesión actual?",
       icon: "warning",
-      buttons :{
+      buttons: {
         cancel: {
           text: "Cancelar",
           value: false,
@@ -26,8 +26,8 @@ function ProfileIcon() {
           value: true,
           visible: true,
           className: "",
-          closeModal: true
-        }
+          closeModal: true,
+        },
       },
       dangerMode: true,
     }).then((willDelete) => {
@@ -37,7 +37,7 @@ function ProfileIcon() {
         });
         setToken(null);
         setUser(null);
-        navigate("/login")
+        navigate("/login");
       }
     });
   };
@@ -48,7 +48,7 @@ function ProfileIcon() {
         className="h-12 aspect-square bg-neutral-500 rounded cursor-pointer relative select-none flex items-center justify-center text-white font-bold "
         onClick={() => setOpenPopup(!openPopup)}
       >
-        {user?.name[0]?.toUpperCase()}
+        {user?.name && user.name.length > 0 ? user.name[0].toUpperCase() : ""}
       </div>
       <div
         className={`absolute top-0 right-0 translate-y-16 w-80 min-h-8 rounded p-4 shadow-md bg-white cursor-default transition-all hover:scale-105 flex flex-col z-10 select-none dark:bg-neutral-800 dark:text-white ${
@@ -63,7 +63,7 @@ function ProfileIcon() {
           onClick={() => toggleDarkMode()}
         >
           <p>Darkmode</p>
-          
+
           <span className=" rounded-full h-6 w-12 px-1 bg-primary bg-opacity-30 shadow-md flex items-center  dark:bg-neutral-500">
             <div className="rounded-full h-[80%] py-2 bg-neutral-600 shadow-md aspect-square dark:right-0 transition-all dark:translate-x-5 dark:bg-primary"></div>
           </span>
