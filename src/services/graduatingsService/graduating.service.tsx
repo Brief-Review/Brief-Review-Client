@@ -2,7 +2,7 @@ import axios from "axios";
 
 const baseUrl = import.meta.env.VITE_BACKEND_URL;
 
-interface graduatingData {
+export interface graduatingData {
   id?: number;
   name: string;
   category: string;
@@ -12,18 +12,20 @@ interface graduatingData {
   partners?: string;
 }
 
-export const graduatings = () => {
-  return axios.get(baseUrl + "/graduatins");
-};
+export const graduatingService =  {
+   index : () => {
+    return axios.get(baseUrl + "/graduatings");
+  },
 
-export const createGraduating = (data: graduatingData) => {
-  return axios.post(baseUrl + "/graduatings", data);
-};
+   create : (data: graduatingData) => {
+    return axios.post(baseUrl + "/graduatings", data);
+  },
 
-export const updateGraduating = (data: graduatingData, id: number) => {
-  return axios.post(baseUrl + "/graduatings/" + id, data);
-};
+   update : (data: graduatingData, id: number) => {
+    return axios.post(baseUrl + "/graduatings/" + id, data);
+  },
 
-export const deleteGraduating = (id: number) => {
-  return axios.get(baseUrl + "/graduatings/" + id);
+   destroy : (id: number) => {
+    return axios.get(baseUrl + "/graduatings/" + id);
+  },
 };
