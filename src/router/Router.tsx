@@ -29,9 +29,10 @@ const Router = () => {
     if(token && location.pathname === "/register" || location.pathname === "/login"){
       return navigate("/home")
     }
+    
     handleGetUser();
 
-  }, [token, location.pathname, navigate]);
+  }, [token, location.pathname]);
 
 
   return (
