@@ -1,14 +1,40 @@
+import { useContext } from "react";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "../../components/ui/common/Button";
 import Loginpicture from "../../assets/Loginpicture.tsx";
 import logo from "../../assets/br-logo.png";
+import { useForm } from "react-hook-form";
+import { getUser, login } from "../../services/userServices/user.services.tsx";
+import AppContext from "../../context/global/AppContext.tsx";
+import swal from "sweetalert";
 
 function Login() {
   const navigate = useNavigate();
 
-  return (
+  const { register, handleSubmit } = useForm();
+  const { setToken } = useContext(AppContext);
 
+
+  
+  const onSubmit = async (dataForm: any) => {
+    try {
+      const { data } = await login(dataForm);
+      setToken(data.access_token);
+      swal({
+        text: "Iniciaste sesión con éxito",
+        icon: "success",
+      });
+    } catch (error) {
+      alert(error);
+      swal({
+        text: "Error de eberth seguramente",
+        icon: "error",
+      });
+    }
+  };
+
+  return (
     <div className="w-full h-screen px-[5%] py-8 grid grid-cols-12 ">
       <div className="hidden shadow-lg rounded bg-neutral-800 md:col-span-6 md:p-8 md:flex md:flex-col gap-12 md:justify-center">
         <span className="ml-8 flex  flex-col gap-2">
@@ -25,7 +51,10 @@ function Login() {
       </div>
       <div className="shadow-md col-span-12 items-center p-4 md:col-span-6 md:p-20">
         {/* FORMULARIO */}
-        <div className="w-full h-full flex flex-col items-center justify-center gap-4">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full h-full flex flex-col items-center justify-center gap-4"
+        >
           <span className="  aspect-square rounded shadow-md bg-neutral-700 w-24">
             <img src={logo} alt="logo-brief-review" className="w-full h-full" />
           </span>
@@ -39,24 +68,28 @@ function Login() {
           <label htmlFor="" className="text-left w-full text-gray-500 ">
             E-mail
             <input
-              type="text"
+              type="email"
               className="border w-full py-1 px-4 my-1"
               placeholder="Tu e-mail"
+              {...register("email")}
+              required
             />
           </label>
           <label htmlFor="" className="text-left w-full text-gray-500 ">
             Contraseña
             <input
-              type="text"
+              type="password"
               className="border w-full py-1 px-4 my-1"
               placeholder="Tu contraseña"
+              {...register("password")}
+              required
             />
           </label>
 
           <label htmlFor="" className="w-full text-left">
             Recuerdame <input type="checkbox" />
           </label>
-          <Button className="w-full" onClick={() => navigate("/home")}>
+          <Button className="w-full" type="submit">
             Login
           </Button>
           <Link to="" className="text-primary">
@@ -67,7 +100,7 @@ function Login() {
               ¿No tienes una cuenta?
             </Link>
           </span>
-        </div>
+        </form>
       </div>
     </div>
   );
