@@ -23,7 +23,7 @@ function Header({ className }: { className?: string }) {
               {user?.role == 1 && "Super admin"}
               {user?.role == 2 && "Formador"}
               {user?.role == 3 && "Mentor"}
-              {user?.role == 3 || user?.role == null && "Coder"}
+              {user?.role == 3 || (user?.role == null && "Coder")}
             </p>
           </div>
           <ProfileIcon />

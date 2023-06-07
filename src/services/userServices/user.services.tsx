@@ -21,8 +21,8 @@ export const registerUser = (data: userCredentials) => {
 };
 
 export const getUser = () => {
-  return axios.get(baseUrl + "/user")
-}
+  return axios.get(baseUrl + "/user");
+};
 
 export const logout = () => {
   return axios.get(baseUrl + "/auth/logout");

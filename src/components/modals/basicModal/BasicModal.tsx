@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { AiFillCloseSquare, AiOutlineClose, AiOutlineCloseCircle, AiOutlineSetting } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 
 interface BasicModalProps {
   children: React.ReactNode;
@@ -28,7 +28,9 @@ const BasicModal: React.FC<BasicModalProps> = ({
         className="relative min-w-[320px] max-w-[480px] min-h-[200px] max-h-[600px] overflow-y-auto bg-white rounded shadow-md"
         onClick={handleModalContainerClick}
       >
-        <button className="absolute right-0 m-4" onClick={closeModal}><AiOutlineClose/></button>
+        <button className="absolute right-0 m-4" onClick={closeModal}>
+          <AiOutlineClose />
+        </button>
         {children}
       </div>
     </article>,

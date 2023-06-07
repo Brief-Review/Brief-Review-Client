@@ -9,5 +9,5 @@ export interface ResourcesCardProps {
   isNew?: boolean;
   date: string;
   sortBy: "newest" | "oldest";
-  tags: string[];
+  tags: string;
 }

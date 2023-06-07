@@ -26,14 +26,15 @@ const Router = () => {
     if (!token && location.pathname !== "/register") {
       return navigate("/login");
     }
-    if(token && location.pathname === "/register" || location.pathname === "/login"){
-      return navigate("/home")
+    if (
+      (token && location.pathname === "/register") ||
+      location.pathname === "/login"
+    ) {
+      return navigate("/home");
     }
-    
+
     handleGetUser();
-
   }, [token, location.pathname]);
-
 
   return (
     <div className="bg-white dark:bg-black">

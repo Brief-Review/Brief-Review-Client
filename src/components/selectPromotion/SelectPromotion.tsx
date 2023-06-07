@@ -15,7 +15,8 @@ type selectPromotionProps = {
 function SelectPromotion({ className }: selectPromotionProps) {
   const [graduatings, setGraduatings] = useState([]);
   const [openOptions, setOpenOptions] = useState<boolean>(false);
-  const [isOpenFormGraduating, openFormGraduating, closeFormGraduating] = useModal(false);
+  const [isOpenFormGraduating, openFormGraduating, closeFormGraduating] =
+    useModal(false);
   const { currentGraduating, setCurrentGraduating } = useContext(AdminContext);
 
   const getGraduatings = async () => {

@@ -1,9 +1,13 @@
-import React, { ReactNode, useState, useMemo } from "react";
+import React, { ReactNode, useState, useMemo, useContext } from "react";
 import { ResourcesCardProps } from "../../models/commons/ResourcesCard.model";
 import FilterButton from "../cards/FilterButton";
 import SortButton from "../cards/SortButton";
 import ResourcesSearchBar from "../ui/common/ResourcesSearchBar";
 import { getTags, getTitle } from "../../utilities/utils";
+import { useModal } from "../../hooks/useModal";
+import AppContext from "../../context/global/AppContext";
+import BasicModal from "../modals/basicModal/BasicModal";
+import FormResource from "../forms/formResource/FormResource";
 
 const ResourcesGrid = ({
   children,
@@ -17,6 +21,10 @@ const ResourcesGrid = ({
   const [showFilterOptions, setShowFilterOptions] = useState(false);
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
+
+  //Crud Modal
+  const { user } = useContext(AppContext);
+  const [isOpen, open, close] = useModal(false);
 
   const handleSortBy = (sortOption: "oldest" | "newest") => {
     setSortBy(sortOption);
@@ -149,6 +157,52 @@ const ResourcesGrid = ({
           handleSortBy={handleSortBy}
         />
       </div>
+
+      {user ? (
+        <div className="flex justify-end">
+          <button
+            onClick={open}
+            type="button"
+            className="text-white bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-3 py-2 mb-2 inline-flex items-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
+          >
+            <svg
+              height="25px"
+              id="Layer_1"
+              version="1.1"
+              viewBox="0 0 50 50"
+              width="25px"
+            >
+              <rect fill="none" height="50" width="50" />
+              <line
+                fill="#ffffff"
+                stroke="#ffffff"
+                strokeMiterlimit="10"
+                strokeWidth="4"
+                x1="9"
+                x2="41"
+                y1="25"
+                y2="25"
+              />
+              <line
+                fill="none"
+                stroke="#ffffff"
+                strokeMiterlimit="10"
+                strokeWidth="4"
+                x1="25"
+                x2="25"
+                y1="9"
+                y2="41"
+              />
+            </svg>
+            <span>Agregar recurso</span>
+          </button>
+          <BasicModal isOpen={isOpen} closeModal={close}>
+            <FormResource />
+          </BasicModal>
+        </div>
+      ) : (
+        <></>
+      )}
       <div
         id="CardsGrid"
         className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3"

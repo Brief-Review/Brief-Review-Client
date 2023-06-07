@@ -12,20 +12,20 @@ export interface graduatingData {
   partners?: string;
 }
 
-export const graduatingService =  {
-   index : () => {
+export const graduatingService = {
+  index: () => {
     return axios.get(baseUrl + "/graduatings");
   },
 
-   create : (data: graduatingData) => {
+  create: (data: graduatingData) => {
     return axios.post(baseUrl + "/graduatings", data);
   },
 
-   update : (data: graduatingData, id: number) => {
+  update: (data: graduatingData, id: number) => {
     return axios.post(baseUrl + "/graduatings/" + id, data);
   },
 
-   destroy : (id: number) => {
+  destroy: (id: number) => {
     return axios.get(baseUrl + "/graduatings/" + id);
   },
 };

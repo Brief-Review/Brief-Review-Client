@@ -15,8 +15,6 @@ function Login() {
   const { register, handleSubmit } = useForm();
   const { setToken } = useContext(AppContext);
 
-
-  
   const onSubmit = async (dataForm: any) => {
     try {
       const { data } = await login(dataForm);

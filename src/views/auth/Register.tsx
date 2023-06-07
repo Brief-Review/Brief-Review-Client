@@ -5,9 +5,12 @@ import LoginPicture from "../../assets/Loginpicture";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { useForm } from "react-hook-form";
 import logo from "../../assets/br-logo.png";
-import swal from 'sweetalert';
+import swal from "sweetalert";
 import AppContext from "../../context/global/AppContext";
-import { getUser, registerUser } from "../../services/userServices/user.services";
+import {
+  getUser,
+  registerUser,
+} from "../../services/userServices/user.services";
 
 function Register() {
   const navigate = useNavigate();
@@ -15,21 +18,19 @@ function Register() {
   const { register, handleSubmit } = useForm();
   const { setToken, setUser } = useContext(AppContext);
 
-
-
   const onSubmit = async (dataForm: any) => {
     try {
       const { data } = await registerUser(dataForm);
       setToken(data.access_token);
       swal({
-        text:"Te has registrado con éxito",
+        text: "Te has registrado con éxito",
         icon: "success",
       });
 
       navigate("/home");
     } catch (error) {
       swal({
-        text:"Error",
+        text: "Error",
         icon: "error",
       });
     }
@@ -50,7 +51,10 @@ function Register() {
       </div>
       <div className="shadow-md col-span-12 items-center p-4 md:col-span-6 md:p-20">
         {/* FORMULARIO */}
-        <form onSubmit={handleSubmit(onSubmit)} className="w-full h-full flex flex-col items-center justify-center gap-4">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full h-full flex flex-col items-center justify-center gap-4"
+        >
           <span className="  aspect-square rounded shadow-md bg-neutral-700 w-24">
             <img src={logo} alt="logo-brief-review" className="w-full h-full" />
           </span>
@@ -90,7 +94,7 @@ function Register() {
               {...register("password")}
             />
           </label>
-          
+
           <Button className="w-full">Registrarse</Button>
           <span className="w-full text-center">
             <Link to="/login" className="text-primary ">

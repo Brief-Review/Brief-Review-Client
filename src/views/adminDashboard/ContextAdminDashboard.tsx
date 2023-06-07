@@ -7,8 +7,8 @@ type AdminContextType = {
   openFormEditPromotion: boolean;
   setOpenFormCreatePromotion: (value: boolean) => void;
   setOpenFormEditPromotion: (value: boolean) => void;
-  currentGraduating:object,
-  setCurrentGraduating:(value:number) => void;
+  currentGraduating: object;
+  setCurrentGraduating: (value: number) => void;
 };
 
 type AdminProviderProps = {
@@ -19,7 +19,10 @@ type AdminProviderProps = {
 const AdminContext = createContext<AdminContextType | any>(undefined);
 
 export const AdminContextProvider = ({ children }: AdminProviderProps) => {
-  const [currentGraduating, setCurrentGraduating] = useLocalStorage("current_graduating",{})
+  const [currentGraduating, setCurrentGraduating] = useLocalStorage(
+    "current_graduating",
+    {}
+  );
   const [openFormCreatePromotion, setOpenFormCreatePromotion] = useState(false);
   const [openFormEditPromotion, setOpenFormEditPromotion] = useState(false);
 
@@ -29,7 +32,7 @@ export const AdminContextProvider = ({ children }: AdminProviderProps) => {
     setOpenFormCreatePromotion,
     setOpenFormEditPromotion,
     currentGraduating,
-    setCurrentGraduating
+    setCurrentGraduating,
   };
 
   return (

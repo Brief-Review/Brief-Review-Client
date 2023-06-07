@@ -8,13 +8,14 @@ export const ResourceCard = ({
   thumbnail,
   title,
   description,
-  isNew: isNew,
+  isNew,
   date,
   sortBy,
   tags,
 }: ResourcesCardProps) => {
   const cardClasses = `w-full bg-white shadow-md rounded-lg p-4 dark:bg-neutral-800 md:w-98 ${className}`;
-  const isNewCard = isNew ? "Nuevo!" : "";
+  const tagArray = (tags as string).split(",").map((tag) => tag.trim());
+  console.log(tagArray);
 
   return (
     <div id="resourceCard" className={cardClasses}>
@@ -22,11 +23,11 @@ export const ResourceCard = ({
         <img src={thumbnail} alt="Thumbnail" className="w-full h-auto mb-4" />
       )}
       <div className="flex justify-between mb-2">
-        <div className="flex flex-wrap items-center ">
-          {tags.map((tag) => (
+        <div className="flex flex-wrap items-center">
+          {tagArray.map((tag) => (
             <span
               key={tag}
-              className="px-2 py-1 bg-gray-200 rounded-md text-gray-700 mr-2 mb-2 dark:bg-neutral-700 00 dark:text-neutral-100"
+              className="px-2 py-1 bg-gray-200 rounded-md text-gray-700 mr-2 mb-2 dark:bg-neutral-700 dark:text-neutral-100"
             >
               {tag}
             </span>
@@ -34,14 +35,11 @@ export const ResourceCard = ({
         </div>
         {isNew && (
           <span className="h-8 px-2 py-1 bg-green-500 rounded-md text-white mr-2 mb-2">
-            {isNewCard}
+            Nuevo!
           </span>
         )}
       </div>
-      <h2
-        id="resourceText"
-        className="text-lg text-gray-500 font-bold mb-2 dark:text-neutral-50"
-      >
+      <h2 className="text-lg text-gray-500 font-bold mb-2 dark:text-neutral-50">
         {title}
       </h2>
       <p className="text-gray-700 mb-4">{description}</p>
