@@ -15,7 +15,12 @@ export const ResourceCard = ({
 }: ResourcesCardProps) => {
   const cardClasses = `w-full bg-white shadow-md rounded-lg p-4 dark:bg-neutral-800 md:w-98 ${className}`;
   const tagArray = (tags as string).split(",").map((tag) => tag.trim());
-  console.log(tagArray);
+
+  const formattedDate = new Date(date).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
 
   return (
     <div id="resourceCard" className={cardClasses}>
@@ -45,7 +50,7 @@ export const ResourceCard = ({
       <p className="text-gray-700 mb-4">{description}</p>
       {children}
       <div className="text-gray-500 text-sm mt-2 dark:text-neutral-50">
-        <span>{date}</span>
+        <span>{formattedDate}</span>
       </div>
     </div>
   );

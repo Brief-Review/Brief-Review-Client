@@ -6,10 +6,16 @@ interface HomeGridProps {
 }
 
 const HomeGrid: React.FC<HomeGridProps> = ({ className, children }) => {
-  const filteredChildren = React.Children.toArray(children).filter((child) => {
-    const element = child as React.ReactElement;
-    return element.props.isNew;
-  }) as React.ReactElement[];
+  const sortedChildren = React.Children.toArray(children)
+  .sort((a, b) => {
+    const elementA = a as React.ReactElement;
+    const elementB = b as React.ReactElement;
+    return (
+      new Date(elementB.props.date).getTime() -
+      new Date(elementA.props.date).getTime()
+    );
+  })
+  .slice(0, 6) as React.ReactElement[];
 
   return (
     <div className={className}>
@@ -41,7 +47,7 @@ const HomeGrid: React.FC<HomeGridProps> = ({ className, children }) => {
         </a>
       </div>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-1 lg:grid-cols-3 p-4">
-        {filteredChildren}
+        {sortedChildren}
       </div>
     </div>
   );
