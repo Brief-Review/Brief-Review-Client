@@ -7,15 +7,15 @@ interface HomeGridProps {
 
 const HomeGrid: React.FC<HomeGridProps> = ({ className, children }) => {
   const sortedChildren = React.Children.toArray(children)
-  .sort((a, b) => {
-    const elementA = a as React.ReactElement;
-    const elementB = b as React.ReactElement;
-    return (
-      new Date(elementB.props.date).getTime() -
-      new Date(elementA.props.date).getTime()
-    );
-  })
-  .slice(0, 6) as React.ReactElement[];
+    .sort((a, b) => {
+      const elementA = a as React.ReactElement;
+      const elementB = b as React.ReactElement;
+      return (
+        new Date(elementB.props.date).getTime() -
+        new Date(elementA.props.date).getTime()
+      );
+    })
+    .slice(0, 6) as React.ReactElement[];
 
   return (
     <div className={className}>

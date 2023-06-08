@@ -136,6 +136,7 @@ const ResourcesGrid = ({
     "Go",
     "React",
     "CSS",
+    "Node",
   ];
 
   return (
@@ -163,7 +164,7 @@ const ResourcesGrid = ({
           <button
             onClick={open}
             type="button"
-            className="text-white bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-3 py-2 mb-2 inline-flex items-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
+            className="text-white bg-cyan-700 hover:bg-cyan-800 focus:ring-4 focus:outline-none focus:ring-cyan-300 font-medium rounded-lg text-sm px-3 py-2 mb-5 inline-flex items-center dark:bg-cyan-600 dark:hover:bg-cyan-700 dark:focus:ring-cyan-800"
           >
             <svg
               height="25px"

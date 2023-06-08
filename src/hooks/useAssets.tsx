@@ -4,10 +4,6 @@ import { assetsService } from "../services/assetsServices/asset.service";
 export function useAssets() {
   const [resourceData, setResourceData] = useState([]);
 
-  useEffect(() => {
-    fetchAssets();
-  }, []);
-
   const fetchAssets = async () => {
     try {
       const { data } = await assetsService.index();
@@ -16,6 +12,10 @@ export function useAssets() {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    fetchAssets();
+  }, []);
 
   return resourceData;
 }

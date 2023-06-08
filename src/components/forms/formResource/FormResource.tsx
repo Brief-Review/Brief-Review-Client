@@ -13,15 +13,17 @@ function FormResource({
 }) {
   const { register, handleSubmit, reset } = useForm();
   const [tags, setTags] = useState<string[]>([]);
+  const [input, setInput] = useState("");
+  const [isKeyReleased, setIsKeyReleased] = useState(false);
 
   const createAsset = async (formData: any) => {
-    const { title, link, tags, image } = formData;
+    const { title, link, image } = formData;
 
     const assetData = {
       title: title,
       link: link,
       image: image,
-      tags: tags.split(",").map((tag: string) => tag.trim()),
+      tags: [...tags, ...formData.tags],
     };
 
     try {
@@ -32,21 +34,54 @@ function FormResource({
         text: "Nuevo recurso creado con éxito.",
         buttons: ["Ok"],
       });
-      console.log(data);
       reset();
+      setTags([]);
     } catch (error) {
       swal({
         icon: "error",
         text: "Todo maaaal",
       });
+      console.log("el input es" + input);
       console.error(error);
     }
   };
 
-  const handleTagsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const tagsValue = event.target.value;
-    const tagsArray = tagsValue.split(",").map((tag) => tag.trim());
-    setTags(tagsArray);
+  const onChange = (e: any) => {
+    const { value } = e.target;
+    setInput(value);
+  };
+
+  const onKeyDown = (e: any) => {
+    const { key } = e;
+    const trimmedInput = input.trim();
+
+    if (
+      (key === "," || key === " ") &&
+      trimmedInput.length &&
+      !tags.includes(trimmedInput)
+    ) {
+      e.preventDefault();
+      setTags((prevState) => [...prevState, trimmedInput]);
+      setInput("");
+    }
+
+    if (key === "Backspace" && !input.length && tags.length && isKeyReleased) {
+      const tagsCopy = [...tags];
+      const poppedTag: any = tagsCopy.pop();
+      e.preventDefault();
+      setTags(tagsCopy);
+      setInput(poppedTag);
+    }
+
+    setIsKeyReleased(false);
+  };
+
+  const onKeyUp = () => {
+    setIsKeyReleased(true);
+  };
+
+  const deleteTag = (index: number) => {
+    setTags((prevState) => prevState.filter((tag, i) => i !== index));
   };
 
   return (
@@ -90,15 +125,28 @@ function FormResource({
             ></input>
 
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-              Tags (separated by commas):
+              Tags
             </label>
+            <div className="container flex flex-wrap w-100 max-w-100 rounded-md">
+              {tags.map((tag, index) => (
+                <div
+                  key={index}
+                  className="tag text-white flex items-center gap-2 m-2 mr-3 p-2 pr-2 border border-orange-500 rounded-md bg-orange-500 whitespace-nowrap"
+                >
+                  {tag}
+                  <button onClick={() => deleteTag(index)}>x</button>
+                </div>
+              ))}
+            </div>
             <input
               {...register("tags")}
               type="text"
-              className="bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-              placeholder="Add tags..."
-              onChange={handleTagsChange}
-              value={tags.join(", ")}
+              className="w-100 max-w-100 border-none rounded-md p-4 pl-4 bg-gray-50 mb-2 border border-gray-300 text-gray-900 text-sm focus:ring-primary-600 focus:border-primary-600 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+              placeholder="Añade etiquetas"
+              value={input}
+              onKeyDown={onKeyDown}
+              onKeyUp={onKeyUp}
+              onChange={onChange}
             ></input>
           </div>
 
