@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import logo from "../../assets/br-logo.png";
 import swal from 'sweetalert';
 import AppContext from "../../context/global/AppContext";
-import { getUser, registerUser } from "../../services/userServices/user.services";
+import {userService } from "../../services/userServices/user.services";
 
 function Register() {
   const navigate = useNavigate();
@@ -15,12 +15,16 @@ function Register() {
   const { register, handleSubmit } = useForm();
   const { setToken, setUser } = useContext(AppContext);
 
-
+  const handleGetUser = async () => {
+    const { data } = await userService.getUser();
+    setUser(data.data);
+  };
 
   const onSubmit = async (dataForm: any) => {
     try {
-      const { data } = await registerUser(dataForm);
+      const { data } = await userService.register(dataForm);
       setToken(data.access_token);
+      await handleGetUser();
       swal({
         text:"Te has registrado con éxito",
         icon: "success",

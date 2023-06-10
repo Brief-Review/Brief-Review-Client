@@ -5,22 +5,25 @@ import Button from "../../components/ui/common/Button";
 import Loginpicture from "../../assets/Loginpicture.tsx";
 import logo from "../../assets/br-logo.png";
 import { useForm } from "react-hook-form";
-import { getUser, login } from "../../services/userServices/user.services.tsx";
 import AppContext from "../../context/global/AppContext.tsx";
 import swal from "sweetalert";
+import { userService } from "../../services/userServices/user.services.tsx";
 
 function Login() {
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm();
-  const { setToken } = useContext(AppContext);
+  const { setToken, setUser } = useContext(AppContext);
+  const handleGetUser = async () => {
+    const { data } = await userService.getUser();
+    setUser(data.data);
+  };
 
-
-  
   const onSubmit = async (dataForm: any) => {
     try {
-      const { data } = await login(dataForm);
+      const { data } = await userService.login(dataForm);
       setToken(data.access_token);
+      await handleGetUser();
       swal({
         text: "Iniciaste sesión con éxito",
         icon: "success",
