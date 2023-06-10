@@ -3,33 +3,60 @@ import { promotion } from "../../../models/promotion/Promotion.model";
 import Button from "../../ui/common/Button";
 import { graduatingService } from "../../../services/graduatingsService/graduating.service";
 import swal from "sweetalert";
+import { useEffect } from "react";
 
 function FormPromotion({
   className,
   submitForm,
+  edit,
+  promotionData,
 }: {
   className?: string;
   submitForm?: () => void;
+  edit?: boolean;
+  promotionData?: undefined | {};
 }) {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, setValue } = useForm();
 
-  const createPromotion = async (formData: any) => {
-    const { data } = await graduatingService.create(formData);
+  const submitFormPromotion = async (formData: any) => {
+    if (edit) {
+      const { data } = await graduatingService.update(
+        formData,
+        promotionData?.id
+      );
+      if (submitForm) submitForm();
+      swal({
+        icon: "success",
+        text: "Promoción editada con éxito",
+        buttons: ["Ok"],
+      });
+    } else {
+      const { data } = await graduatingService.create(formData);
+      swal({
+        icon: "success",
+        text: "Nueva promoción creada con éxito.",
+        buttons: ["Ok"],
+      });
+      reset();
+    }
     if (submitForm) submitForm();
-    swal({
-      icon: "success",
-      text: "Nueva promoción creada con éxito.",
-      buttons: ["Ok"],
-    });
-    reset();
   };
+
+  useEffect(() => {
+    const initialData = promotionData;
+
+    if (initialData != null)
+      Object.keys(initialData).forEach((key) => {
+        setValue(key, initialData[key]);
+      });
+  }, [setValue]);
 
   return (
     <div className={`py-8 px-4 border shadow-md bg-white ${className}`}>
       <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
-        Crear nueva promoción
+        {edit ? "Editar promoción" : "Crear nueva promoción"}
       </h2>
-      <form onSubmit={handleSubmit(createPromotion)}>
+      <form onSubmit={handleSubmit(submitFormPromotion)}>
         <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
           <div className="sm:col-span-2">
             <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
@@ -115,7 +142,9 @@ function FormPromotion({
               required
             ></input>
           </div>
-          <Button className="w-full col-span-full">Crear promoción</Button>
+          <Button className="w-full col-span-full">
+            {edit ? "Editar promoción" : "Crear promoción"}
+          </Button>
         </div>
       </form>
     </div>
