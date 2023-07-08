@@ -23,7 +23,6 @@ function Login() {
     try {
       const { data } = await userService.login(dataForm);
       setToken(data.access_token);
-      await handleGetUser();
       swal({
         text: "Iniciaste sesión con éxito",
         icon: "success",
@@ -35,6 +34,7 @@ function Login() {
         icon: "error",
       });
     }
+    await handleGetUser();
   };
 
   return (

@@ -22,10 +22,10 @@ export const graduatingService =  {
   },
 
    update : (data: graduatingData, id: number) => {
-    return axios.post(baseUrl + "/graduatings/" + id, data);
+    return axios.put(baseUrl + "/graduatings/" + id, data);
   },
 
    destroy : (id: number) => {
-    return axios.get(baseUrl + "/graduatings/" + id);
+    return axios.delete(baseUrl + "/graduatings/" + id);
   },
 };

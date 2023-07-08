@@ -10,12 +10,12 @@ import BasicModal from "../../components/modals/basicModal/BasicModal";
 import { useModal } from "../../hooks/useModal";
 import AdminContext, { AdminContextProvider } from "./ContextAdminDashboard";
 import SelectPromotion from "../../components/selectPromotion/SelectPromotion";
+import { UsersList } from "../../components/templates/usersList/UsersList";
 
 function AdminDashboard() {
   const [graduatings, setGraduatings] = useState<[] | null>(null);
   const [openOptions, setOpenOptions] = useState(false);
 
-  const [IsOpenUserModal, openUserModal, closeUserModal] = useModal(false);
   const [isOpenFormPromotion, openFormPromotion, closeFormPromotion] =
     useModal(false);
 
@@ -27,21 +27,8 @@ function AdminDashboard() {
         <div className="col-span-12 grid-cols-12 row-span-4 row-start-2 row-end-6 lg:row-span-5 lg:row-start-2 overflow-y-scroll scrollbar-thin scrollbar scrollbar-thumb-primary   pb-4 grid gap-4">
           {/* Selector de promociones */}
           <SelectPromotion className="col-span-12"/>
-          <div className="col-span-12 p-4 border shadow-md flex flex-col gap-2">
-            <h2 className="">Lista de Coders:</h2>
-            <div className="w-full px-4 py-2 border rounded flex justify-between items-center hover:bg-neutral-200 pointer-events-auto">
-              Usuario tal
-              <button
-                className="pointer-events-auto"
-                onClick={() => openUserModal()}
-              >
-                <AiOutlineSetting />
-              </button>
-              <BasicModal isOpen={IsOpenUserModal} closeModal={closeUserModal}>
-                <FormPromotion />
-              </BasicModal>
-            </div>
-          </div>
+          <UsersList className="col-span-12"/>
+          
           <FormPromotion className="col-span-12  md:col-span-6" />
           <FormBrief className="col-span-12  md:col-span-6" />
           <FormResource className="col-span-12  md:col-span-6" />

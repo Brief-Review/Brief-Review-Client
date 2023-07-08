@@ -19,7 +19,7 @@ type AdminProviderProps = {
 const AdminContext = createContext<AdminContextType | any>(undefined);
 
 export const AdminContextProvider = ({ children }: AdminProviderProps) => {
-  const [currentGraduating, setCurrentGraduating] = useLocalStorage("current_graduating",{})
+  const [currentGraduating, setCurrentGraduating] = useLocalStorage("current_graduating",undefined)
   const [openFormCreatePromotion, setOpenFormCreatePromotion] = useState(false);
   const [openFormEditPromotion, setOpenFormEditPromotion] = useState(false);
 
