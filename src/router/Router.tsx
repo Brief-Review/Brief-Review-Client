@@ -7,20 +7,15 @@ import Login from "../views/auth/Login";
 import Register from "../views/auth/Register";
 import AdminDashboard from "../views/adminDashboard/AdminDashboard";
 import Briefings from "../views/Briefings/Briefings";
-import TestView from "../views/testView/TestView";
+import {TestView } from "../views/testView/TestView";
 import { useContext, useEffect } from "react";
 import AppContext from "../context/global/AppContext";
-import { getUser } from "../services/userServices/user.services";
 
 const Router = () => {
-  const { token, setUser } = useContext(AppContext);
+  const { token } = useContext(AppContext);
   const navigate = useNavigate();
   const location = useLocation();
 
-  const handleGetUser = async () => {
-    const { data } = await getUser();
-    setUser(data.data);
-  };
 
   useEffect(() => {
     if (!token && location.pathname !== "/register") {
@@ -30,8 +25,6 @@ const Router = () => {
       return navigate("/home")
     }
     
-    handleGetUser();
-
   }, [token, location.pathname]);
 
 
@@ -47,7 +40,7 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<AdminDashboard />} />
-        <Route path="test" element={<TestView />} />
+        <Route path="/test" element={<TestView />} />
       </Routes>
     </div>
   );
